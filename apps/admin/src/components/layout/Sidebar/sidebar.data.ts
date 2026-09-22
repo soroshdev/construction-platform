@@ -21,7 +21,7 @@ export const sidebaerMenu = [
     children: [
       {
         label: "ایجاد پروژه",
-        url: "createproject",
+        url: "/projects/new",
       },
       {
         label: "لیست پروژه ها",

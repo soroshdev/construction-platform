@@ -36,18 +36,18 @@ export default function RootLayout({
       dir="rtl"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-screen overflow-hidden">
+      <body className="h-screen w-screen overflow-hidden">
         <ThemeProvider>
           <TooltipProvider>
-            <SidebarProvider>
+            <SidebarProvider className="h-full">
               <AppSidebar />
 
-              <div className="flex min-h-0 flex-1 flex-col">
+              <div className="flex h-full flex-1 flex-col overflow-hidden">
                 {/* Header */}
                 <AppHeader />
 
                 {/* Content */}
-                <main className="min-h-0 flex-1 overflow-auto p-6">
+                <main className="flex-1 overflow-y-auto p-5 no-scrollbar">
                   {children}
                 </main>
               </div>
