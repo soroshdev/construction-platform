@@ -3,7 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/layout/AppSidebar";
+import { AppSidebar } from "@/components/layout/Sidebar/AppSidebar";
+import { ThemeProvider } from "@/components/theme-provider";
+import AppHeader from "@/components/layout/AppHeader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,25 +36,24 @@ export default function RootLayout({
       dir="rtl"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-screen">
-        <TooltipProvider>
-          <SidebarProvider>
-            <AppSidebar />
+      <body className="min-h-screen overflow-hidden">
+        <ThemeProvider>
+          <TooltipProvider>
+            <SidebarProvider>
+              <AppSidebar />
 
-            <div className="flex min-h-screen flex-1 flex-col ">
-              {/* Header */}
-              <header className="h-20 shrink-0 border-b bg-pink-500">
-                <div className="flex h-full items-center px-6">
-                  <SidebarTrigger />
-                  <h1 className="mr-4 text-xl font-semibold">پنل مدیریت</h1>
-                </div>
-              </header>
+              <div className="flex min-h-0 flex-1 flex-col">
+                {/* Header */}
+                <AppHeader />
 
-              {/* Content */}
-              <main className="flex-1 p-6">{children}</main>
-            </div>
-          </SidebarProvider>
-        </TooltipProvider>
+                {/* Content */}
+                <main className="min-h-0 flex-1 overflow-auto p-6">
+                  {children}
+                </main>
+              </div>
+            </SidebarProvider>
+          </TooltipProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
