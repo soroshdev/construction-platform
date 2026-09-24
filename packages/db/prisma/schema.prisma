@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Project {
+  id                     String @id @default(cuid())
+  projectName            String @db.VarChar(100)
+  usageType              String
+  totalFloor             Int
+  unitAreasFrom          Float
+  unitAreasTo            Float
+  location               String
+  parcelId               Int
+  totalLandArea          Float
+  projectStructure       String
+  projectStructureDetail String
+  landscape              String
+  features               String
+  description            String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

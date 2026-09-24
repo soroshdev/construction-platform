@@ -7,13 +7,13 @@ const projectSchema = z.object({
   unitAreasFrom: z.number().min(1, ""),
   unitAreasTo: z.number().min(1, ""),
   location: z.string().min(3, ""),
-  parcelId: z.number().min(1),
-  totalLandArea: z.number().min(1),
-  projectStructure: z.string().min(1),
-  projectStructureDetail: z.string().min(1),
-  Landscape: z.string().min(1),
-  features: z.string().min(1),
-  description: z.string().min(1),
+  parcelId: z.number().min(1, ""),
+  totalLandArea: z.number().min(1, ""),
+  projectStructure: z.string().min(1, ""),
+  projectStructureDetail: z.string().min(1, ""),
+  landscape: z.string().min(1, ""),
+  features: z.string().min(1, ""),
+  description: z.string().min(1, ""),
 });
 
 type ProjectFormData = z.infer<typeof projectSchema>;

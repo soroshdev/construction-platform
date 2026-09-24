@@ -23,7 +23,7 @@ import Link from "next/link";
 
 export function AppSidebar() {
   return (
-    <Sidebar side="right">
+    <Sidebar side="right" variant="floating">
       <SidebarHeader className="p-3 border-b items-center">
         <span>LOGO</span>
         <h2 className="text-lg font-bold">نیک آدرین</h2>

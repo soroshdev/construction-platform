@@ -1,0 +1,8 @@
+{
+  "extends": "@construction/typescript-config/base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "."
+  },
+  "include": ["src", "generated"]
+}
