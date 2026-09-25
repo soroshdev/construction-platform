@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import localFont from "next/font/local";
 import { locales, type Locale } from "@construction/i18n";
 import "../globals.css";
+import { QueryProvider } from "../query-provider";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -43,7 +44,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={direction}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );

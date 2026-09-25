@@ -1,0 +1,9 @@
+{
+  "extends": "@construction/typescript-config/base.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true
+  },
+  "include": ["src/**/*.ts", "prisma.config.ts", "generated/**/*.ts"]
+}

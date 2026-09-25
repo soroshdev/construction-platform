@@ -13,6 +13,8 @@
   "dependencies": {
     "@construction/i18n": "workspace:*",
     "@construction/ui": "workspace:*",
+    "@construction/validation": "workspace:*",
+    "@tanstack/react-query": "^5.103.2",
     "next": "16.3.5",
     "react": "19.2.8",
     "react-dom": "19.2.8"

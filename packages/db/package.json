@@ -1,0 +1,27 @@
+{
+  "name": "@construction/db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/client.ts"
+  },
+  "scripts": {
+    "db:generate": "prisma generate && node scripts/normalize-prisma-imports.ts",
+    "db:migrate": "prisma migrate dev",
+    "db:push": "prisma db push",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.10.0",
+    "dotenv": "^17.2.3",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "@construction/typescript-config": "workspace:*",
+    "prisma": "^7.10.0",
+    "typescript": "^7.0.2"
+  }
+}
