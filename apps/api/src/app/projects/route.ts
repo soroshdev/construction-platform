@@ -1,11 +1,13 @@
 import { prisma } from "@construction/db";
 import { createProjectSchema } from "@construction/validation";
+import { getRequestSession } from "@/lib/require-auth";
 import { NextRequest, NextResponse } from "next/server";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "http://localhost:3001",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Credentials": "true",
 };
 
 export function OPTIONS() {
@@ -13,6 +15,15 @@ export function OPTIONS() {
 }
 
 export async function POST(request: NextRequest) {
+  const session = await getRequestSession(request);
+
+  if (!session) {
+    return NextResponse.json(
+      { error: "Unauthorized", message: "ورود به حساب کاربری الزامی است." },
+      { status: 401, headers: corsHeaders },
+    );
+  }
+
   const body = await request.json();
 
   const validation = createProjectSchema.safeParse(body);

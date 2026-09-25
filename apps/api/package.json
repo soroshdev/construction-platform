@@ -11,8 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "better-auth": "^1.7.6",
     "@construction/db": "workspace:*",
     "@construction/validation": "workspace:*",
+    "better-auth": "^1.7.6",
     "next": "16.3.5",
     "react": "19.2.8",
     "react-dom": "19.2.8"

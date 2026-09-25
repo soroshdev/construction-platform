@@ -19,6 +19,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { apiFetch } from "@/lib/api-client";
 
 const USAGE_TYPE_OPTION: OptionTypeSelector[] = [
   { label: "مسکونی", value: "maskony" },
@@ -43,22 +44,10 @@ const FormProject = () => {
     console.log(values);
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3002"}/projects`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...values,
-          }),
-        },
-      );
-
-      const body = (await response.json()) as { message?: string };
-
-      if (!response.ok) {
-        throw new Error(body.message ?? "ذخیره پروژه انجام نشد.");
-      }
+      await apiFetch("/projects", {
+        method: "POST",
+        body: JSON.stringify(values),
+      });
 
       setIsCreated(true);
       route.push("/projects");

@@ -10,11 +10,28 @@ import {
 import { Form, InputField, SubmitButton } from "@/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { loginSchema, type LoginFormSchema } from "@construction/validation";
+import { authClient } from "@/lib/auth-client";
 const LoginForm = () => {
+  const router = useRouter();
   const method = useForm<LoginFormSchema>({
     resolver: zodResolver(loginSchema),
   });
+  const loginMutation = useMutation({
+    mutationFn: async (values: LoginFormSchema) => {
+      const result = await authClient.signIn.username(values);
+
+      if (result.error) {
+        throw new Error("نام کاربری یا رمز عبور اشتباه است.");
+      }
+
+      return result.data;
+    },
+    onSuccess: () => router.replace("/dashboard"),
+  });
+
   return (
     <Card className="w-full max-w-sm bg-sidebar">
       <CardHeader className="text-center">
@@ -25,7 +42,7 @@ const LoginForm = () => {
       </CardHeader>
       <CardContent>
         <Form<LoginFormSchema>
-          onSubmit={() => console.log("first")}
+          onSubmit={(values) => loginMutation.mutate(values)}
           methods={method}
         >
           <InputField<LoginFormSchema> name={"username"} label="نام کاربری" />
@@ -34,15 +51,18 @@ const LoginForm = () => {
             type="password"
             label="رمز عبور"
           />
+          <SubmitButton
+            isLoading={loginMutation.isPending}
+            className="mt-4 w-full"
+            title="ورود"
+          />
         </Form>
       </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <SubmitButton
-          isLoading={false}
-          className="w-full"
-          title="ایجاد پروژه"
-        />
-      </CardFooter>
+      {loginMutation.error && (
+        <CardFooter className="text-sm text-red-500">
+          {loginMutation.error.message}
+        </CardFooter>
+      )}
     </Card>
   );
 };
