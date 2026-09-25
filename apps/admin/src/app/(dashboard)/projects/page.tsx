@@ -1,7 +1,7 @@
-import React from "react";
+import ProjectPage from "@/modules/projects/ui/ProjectPage";
 
 const page = () => {
-  return <div>page</div>;
+  return <ProjectPage />;
 };
 
 export default page;

@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["@construction/validation"],
+  transpilePackages: ["@construction/types", "@construction/validation"],
 };
 
 export default nextConfig;

@@ -1,5 +1,7 @@
+import ProfilePage from "@/modules/profile/ProfilePage";
+
 const page = () => {
-  return <div>page</div>;
+  return <ProfilePage />;
 };
 
 export default page;
