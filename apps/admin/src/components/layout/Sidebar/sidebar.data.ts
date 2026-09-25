@@ -12,7 +12,7 @@ export const sidebaerMenu = [
     key: "dashboard",
     label: "داشبورد",
     icon: LayoutDashboard,
-    url: "/",
+    url: "/dashboard",
   },
   {
     key: "prohects",
