@@ -1,4 +1,5 @@
 "use client";
+
 import {
   CancelButton,
   Form,
@@ -9,10 +10,11 @@ import {
   TextareaField,
 } from "@/ui/form";
 import { OptionTypeSelector } from "@/ui/form/SelectBox";
+
 import {
-  projectSchema,
-  type ProjectFormData,
-} from "../validations/project.schema";
+  createProjectSchema,
+  type CreateProjectInput as ProjectFormData,
+} from "@construction/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -31,7 +33,7 @@ const FormProject = () => {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isCreated, setIsCreated] = useState(false);
   const method = useForm<ProjectFormData>({
-    resolver: zodResolver(projectSchema),
+    resolver: zodResolver(createProjectSchema),
   });
 
   const onSubmit = async (values: ProjectFormData) => {

@@ -37,7 +37,7 @@ const InputField = <T extends FieldValues>({
   const error = get(errors, name);
 
   return (
-    <Field className={cn("dir-rtl text-right", clssName)} dir="rtl">
+    <Field className={cn("dir-rtl text-right ", clssName)} dir="rtl">
       <FieldLabel htmlFor={name} className={lableClassName}>
         {label}
       </FieldLabel>

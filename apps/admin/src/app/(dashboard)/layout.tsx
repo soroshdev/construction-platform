@@ -11,7 +11,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <body dir="rtl" className="h-screen w-screen overflow-hidden">
+    <div dir="rtl" className="h-screen w-screen overflow-hidden">
       <QueryProvider>
         <ThemeProvider>
           <TooltipProvider>
@@ -31,7 +31,6 @@ export default function RootLayout({
           </TooltipProvider>
         </ThemeProvider>
       </QueryProvider>
-    </body>
-    // </html>
+    </div>
   );
 }

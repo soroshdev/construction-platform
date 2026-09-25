@@ -32,7 +32,7 @@ export default function RootLayout({
       dir="rtl"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="h-screen w-screen overflow-hidden">{children}</body>
+      <body className="overflow-hidden">{children}</body>
     </html>
   );
 }
